@@ -1,4 +1,4 @@
-package cn.wuwenfu.wechat.Dao;
+package cn.wuwenfu.wechat.dao;
 
 import cn.wuwenfu.wechat.pojo.Brand;
 

@@ -1,4 +1,6 @@
 package cn.wuwenfu.wechat.service.impl;
 
-public class UserServiceImpl {
+import cn.wuwenfu.wechat.service.UserService;
+
+public class UserServiceImpl implements UserService {
 }
