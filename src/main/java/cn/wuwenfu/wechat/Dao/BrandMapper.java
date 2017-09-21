@@ -2,6 +2,9 @@ package cn.wuwenfu.wechat.dao;
 
 import cn.wuwenfu.wechat.pojo.Brand;
 
+import java.util.HashMap;
+import java.util.List;
+
 public interface BrandMapper {
     int deleteByPrimaryKey(Short id);
 
@@ -14,4 +17,6 @@ public interface BrandMapper {
     int updateByPrimaryKeySelective(Brand record);
 
     int updateByPrimaryKey(Brand record);
+
+    List<Brand> getBrands(HashMap hm);
 }

@@ -9,12 +9,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
-    @RequestMapping("/admin/login")
+    @RequestMapping("/login")
     public String login(HttpServletRequest request, Model model){
         System.out.println("hello");
         return "admin/login";
     }
+
+    @RequestMapping("/index")
+    public String index(){
+        return "admin/index";
+    }
+
+    @RequestMapping("/passwordedit")
+    public String passwordEdit(){
+        return "admin/passwordEdit";
+    }
+
 
 }
