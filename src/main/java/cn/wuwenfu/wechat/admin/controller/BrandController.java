@@ -1,6 +1,7 @@
 package cn.wuwenfu.wechat.admin.controller;
 
 import cn.wuwenfu.wechat.common.AppConstant;
+import cn.wuwenfu.wechat.common.FileUpload;
 import cn.wuwenfu.wechat.pojo.Brand;
 import cn.wuwenfu.wechat.service.BrandService;
 import org.springframework.stereotype.Controller;
@@ -44,34 +45,7 @@ public class BrandController {
         if (request.getMethod().equals("GET")){
             return "admin/brandAdd";
         }else{
-            CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver(
-                    request.getSession().getServletContext());
-            String brandLogo = "";
-            if(multipartResolver.isMultipart(request)){
-                //将request变成多部分request
-                MultipartHttpServletRequest multiRequest=(MultipartHttpServletRequest)request;
-                //获取multiRequest 中所有的文件名
-                Iterator iter=multiRequest.getFileNames();
-                while(iter.hasNext())
-                {
-                    //一次遍历所有文件
-                    MultipartFile file=multiRequest.getFile(iter.next().toString());
-                    if(file!=null)
-                    {
-                        brandLogo = file.getOriginalFilename();
-                        //上传
-                        try {
-                            file.transferTo(new File(AppConstant.UPLOAD_DIR+brandLogo));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                }
-
-            }
-
-
+            String brandLogo = FileUpload.upload(request);
             Brand brand = new Brand();
             brand.setUserName(request.getParameter("userName"));
             brand.setPassword(request.getParameter("password"));
@@ -90,8 +64,27 @@ public class BrandController {
     }
 
     @RequestMapping("/brandedit")
-    public String brandEdit(){
-        return "admin/brandEdit";
+    public String brandEdit(HttpServletRequest request, Model model) {
+
+        if (request.getMethod().equals("GET")) {
+            Short id = Short.parseShort(request.getParameter("id"));
+            Brand brand = this.brandService.getBrandById(id);
+            model.addAttribute("brand", brand);
+            return "admin/brandEdit";
+        } else {
+
+            String brandLogo = FileUpload.upload(request);
+            Brand brand = new Brand();
+            brand.setId(Short.parseShort(request.getParameter("id")));
+            brand.setUserName(request.getParameter("userName"));
+            brand.setPassword(request.getParameter("password"));
+            brand.setBrandName(request.getParameter("brandName"));
+            brand.setBrandLogo(brandLogo);
+            System.out.println(brand.toString());
+            this.brandService.editBrand(brand);
+            model.addAttribute("toUrl", "/admin/brand/brandlist");
+            return "common/success";
+        }
     }
 
     @RequestMapping("/branddelete")

@@ -30,7 +30,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     public void editBrand(Brand brand) {
-
+        this.brandMapper.updateByPrimaryKeySelective(brand);
     }
 
     public void deleteBrand(short brandId) {
