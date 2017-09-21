@@ -173,6 +173,8 @@
                 </ul>
             </div>
 
+            <a class="btn btn-info" href="/admin/brand/brandadd">添加用户</a>
+
             <div class="row-fluid sortable">
                 <div class="box span12">
                     <div class="box-header well" data-original-title>
@@ -184,6 +186,28 @@
                         </div>
                     </div>
                     <div class="box-content">
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <div id="DataTables_Table_0_length" class="dataTables_length">
+                                    <label>
+                                        <select id="per_page" size="1" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0">
+                                            <option value="10" >10</option>
+                                            <option value="25">25</option>
+                                            <option value="50" >50</option>
+                                            <option value="100" >100</option>
+                                        </select>记录每页</label>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="dataTables_filter" id="DataTables_Table_0_filter">
+                                    <label>Search:
+                                        <input type="text" id="search" aria-controls="DataTables_Table_0" value="">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
                         <table class="table table-striped table-bordered bootstrap-datatable datatable">
                             <thead>
                             <tr>
@@ -202,6 +226,7 @@
                                     <td>${brand.id}</td>
                                     <td class="center"><fmt:formatDate value="${brand.dateAdd}" pattern="yyyy-MM-dd HH:mm:ss" ></fmt:formatDate> </td>
                                     <td class="center">${brand.userName}</td>
+                                    <td class="center">${brand.brandName}</td>
                                     <td class="center">
                                         ${brand.brandLogo}
                                     </td>
@@ -223,6 +248,21 @@
 
                             </tbody>
                         </table>
+
+                        <div class="pagination pagination-centered">
+                            <ul>
+                                <li><a href="#">Prev</a></li>
+                                <li class="active">
+                                    <a href="#">1</a>
+                                </li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+
+
                     </div>
                 </div><!--/span-->
 
