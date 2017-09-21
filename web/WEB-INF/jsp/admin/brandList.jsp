@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<jsp:include page="../common/config.jsp"></jsp:include>
 <%--
   Created by IntelliJ IDEA.
   User: ft521
@@ -20,6 +21,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <base href="${siteUrl}">
     <title>免费高质量HTML5 Bootstrap响应式后台管理系统模板 - JS代码网</title>
     <meta name="keywords" content="HTML5模版,Bootstrap模版,Bootstrap后台模版,Bootstrap网站后台,Bootstrap3模版,Bootstrap后台管理系统模版,Bootstrap主题" />
     <meta name="description" content="JS代码网提供HTML5模版,Bootstrap模版,Bootstrap后台模版下载">

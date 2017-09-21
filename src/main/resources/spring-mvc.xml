@@ -51,5 +51,6 @@
     </bean>
     <mvc:annotation-driven></mvc:annotation-driven>
     <mvn:resources mapping="/static/**" location="/WEB-INF/static/"></mvn:resources>
+    <mvn:resources mapping="/uploads/**" location="/WEB-INF/uploads/"></mvn:resources>
 
 </beans>

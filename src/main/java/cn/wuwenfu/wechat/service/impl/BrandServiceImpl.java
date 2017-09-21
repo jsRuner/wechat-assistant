@@ -26,7 +26,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     public void addBrand(Brand brand) {
-
+        this.brandMapper.insert(brand);
     }
 
     public void editBrand(Brand brand) {

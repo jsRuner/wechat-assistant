@@ -62,4 +62,17 @@ public class Brand {
     public void setDateAdd(Date dateAdd) {
         this.dateAdd = dateAdd;
     }
+
+
+    @Override
+    public String toString() {
+        return "Brand{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", brandLogo='" + brandLogo + '\'' +
+                ", brandName='" + brandName + '\'' +
+                ", dateAdd=" + dateAdd +
+                '}';
+    }
 }
