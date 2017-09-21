@@ -234,11 +234,11 @@
                                     </td>
                                     <td class="center">
 
-                                        <a class="btn btn-info" href="#">
+                                        <a class="btn btn-info" href="${siteUrl}/admin/brand/brandedit?id=${brand.id}">
                                             <i class="icon-edit icon-white"></i>
                                             编辑
                                         </a>
-                                        <a class="btn btn-danger" href="#">
+                                        <a class="btn btn-danger" href="${siteUrl}/admin/brand/branddelete?id=${brand.id}">
                                             <i class="icon-trash icon-white"></i>
                                             删除
                                         </a>

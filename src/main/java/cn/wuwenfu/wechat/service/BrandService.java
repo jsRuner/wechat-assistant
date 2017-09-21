@@ -12,7 +12,7 @@ public interface BrandService {
 
     public void editBrand(Brand brand);
 
-    public void deleteBrand(Brand brand);
+    public void deleteBrand(short brandId);
 
     public Brand getBrandById(short brandId);
 }

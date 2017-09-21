@@ -33,7 +33,6 @@ public class BrandController {
         hm.put("pagesize",20);
         List<Brand> brands = this.brandService.getBrands(hm);
         model.addAttribute("brands",brands);
-
         for (Brand brand : brands
              ) {
             System.out.println(brand.toString());
@@ -43,13 +42,10 @@ public class BrandController {
     @RequestMapping("/brandadd")
     public String brandAdd(HttpServletRequest request, Model model){
         if (request.getMethod().equals("GET")){
-
             return "admin/brandAdd";
         }else{
-
             CommonsMultipartResolver multipartResolver=new CommonsMultipartResolver(
                     request.getSession().getServletContext());
-
             String brandLogo = "";
             if(multipartResolver.isMultipart(request)){
                 //将request变成多部分request
@@ -79,7 +75,6 @@ public class BrandController {
             Brand brand = new Brand();
             brand.setUserName(request.getParameter("userName"));
             brand.setPassword(request.getParameter("password"));
-
             brand.setBrandName(request.getParameter("brandName"));
             brand.setBrandLogo(brandLogo);
             brand.setDateAdd(new Date());
@@ -97,5 +92,13 @@ public class BrandController {
     @RequestMapping("/brandedit")
     public String brandEdit(){
         return "admin/brandEdit";
+    }
+
+    @RequestMapping("/branddelete")
+    public String brandDelete(HttpServletRequest request, Model model){
+        Short id = Short.parseShort(request.getParameter("id"));
+        this.brandService.deleteBrand(id);
+        model.addAttribute("toUrl","/admin/brand/brandlist");
+        return "common/success";
     }
 }

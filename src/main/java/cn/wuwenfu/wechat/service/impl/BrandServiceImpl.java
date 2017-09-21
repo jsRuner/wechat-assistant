@@ -33,9 +33,11 @@ public class BrandServiceImpl implements BrandService {
 
     }
 
-    public void deleteBrand(Brand brand) {
-
+    public void deleteBrand(short brandId) {
+        this.brandMapper.deleteByPrimaryKey(brandId);
     }
+
+
 
     public Brand getBrandById(short brandId) {
         return this.brandMapper.selectByPrimaryKey(brandId);
