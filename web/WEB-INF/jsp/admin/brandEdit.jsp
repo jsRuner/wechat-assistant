@@ -203,7 +203,7 @@
                                     <div class="controls">
                                         <input class="input-xlarge focused" id="brandLogo" name="brandLogo"  type="file">
                                         <c:if test="${!empty brand.brandLogo}">
-                                            <img src="/uploads/${brand.brandLogo}" alt="">
+                                            <img style="display: block;width: 200px;" src="/uploads/${brand.brandLogo}" alt="">
                                         </c:if>
                                     </div>
                                 </div>

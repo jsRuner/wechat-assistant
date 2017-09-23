@@ -21,6 +21,9 @@ public class FileUpload {
                 MultipartFile file = multiRequest.getFile(iter.next().toString());
                 if (file != null) {
                     fileName = file.getOriginalFilename();
+                    if (fileName == ""){
+                        return null;
+                    }
                     //上传
                     try {
                         file.transferTo(new File(AppConstant.UPLOAD_DIR + fileName));
