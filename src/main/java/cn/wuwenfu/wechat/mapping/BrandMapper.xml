@@ -23,8 +23,23 @@
     select
     <include refid="Base_Column_List" />
     from brand
-    limit #{offset},#{pagesize}
+    limit #{offset},#{pageSize}
   </select>
+
+  <!-- 分页SQL语句 -->
+  <select id="selectBrandsByPage" resultMap="BaseResultMap">
+    select
+    *
+    from brand WHERE brand_name LIKE CONCAT('%', #{brandName, jdbcType=VARCHAR}, '%') limit #{offset},#{pageSize}
+  </select>
+  <!-- 取得记录的总数 -->
+  <select id="getBrandsCount" resultType="long">
+    SELECT COUNT(*) FROM brand WHERE brand_name LIKE CONCAT('%', #{brandName, jdbcType=VARCHAR}, '%')
+  </select>
+
+
+
+
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
     delete from brand

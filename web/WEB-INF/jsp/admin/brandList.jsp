@@ -189,21 +189,11 @@
                     </div>
                     <div class="box-content">
                         <div class="row-fluid">
-                            <div class="span6">
-                                <div id="DataTables_Table_0_length" class="dataTables_length">
-                                    <label>
-                                        <select id="per_page" size="1" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0">
-                                            <option value="10" >10</option>
-                                            <option value="25">25</option>
-                                            <option value="50" >50</option>
-                                            <option value="100" >100</option>
-                                        </select>记录每页</label>
-                                </div>
-                            </div>
+
                             <div class="span6">
                                 <div class="dataTables_filter" id="DataTables_Table_0_filter">
                                     <label>Search:
-                                        <input type="text" id="search" aria-controls="DataTables_Table_0" value="">
+                                        <input type="text" id="search"  aria-controls="DataTables_Table_0" value="${search}">
                                     </label>
                                 </div>
                             </div>
@@ -251,16 +241,67 @@
                             </tbody>
                         </table>
 
+
+
                         <div class="pagination pagination-centered">
                             <ul>
-                                <li><a href="#">Prev</a></li>
+
+                                <c:choose>
+                                    <c:when test="${page.pageNow - 1 > 0}">
+                                        <li><a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow - 1}">Prev</a></li>
+                                    </c:when>
+                                    <c:when test="${page.pageNow - 1 <= 0}">
+                                        <li><a href="/admin/brand/brandlist?search=${search}&pageNow=1">Prev</a></li>
+                                    </c:when>
+                                </c:choose>
+
+
+                                    <c:if test="${page.pageNow-2 <= page.totalPageCount && page.pageNow -2 >0}">
+                                        <li> <a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow -2}">${page.pageNow-2}</a></li>
+                                    </c:if>
+                                    <c:if test="${page.pageNow-1 <= page.totalPageCount && page.pageNow -1 >0 }">
+                                        <li> <a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow -1 }">${page.pageNow-1}</a></li>
+                                    </c:if>
+
+
+
+
+
                                 <li class="active">
-                                    <a href="#">1</a>
+                                    <a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow}">${page.pageNow}</a>
                                 </li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">Next</a></li>
+
+                                    <c:if test="${page.pageNow+1 <= page.totalPageCount}">
+                                        <li> <a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow + 1}">${page.pageNow+1}</a></li>
+                                    </c:if>
+                                    <c:if test="${page.pageNow+2 <= page.totalPageCount}">
+                                        <li> <a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow + 2}">${page.pageNow+2}</a></li>
+                                    </c:if>
+
+
+
+
+
+
+
+
+
+                                <c:choose>
+                                    <c:when test="${page.totalPageCount==0}">
+
+                                        <li><a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow}">Next</a></li>
+                                    </c:when>
+                                    <c:when test="${page.pageNow + 1 < page.totalPageCount}">
+
+                                        <li> <a href="/admin/brand/brandlist?search=${search}&pageNow=${page.pageNow + 1}">Next</a></li>
+                                    </c:when>
+                                    <c:when test="${page.pageNow + 1 >= page.totalPageCount}">
+
+                                        <li><a href="/admin/brand/brandlist?search=${search}&pageNow=${page.totalPageCount}">Next</a></li>
+                                    </c:when>
+                                </c:choose>
+
+
                             </ul>
                         </div>
 
@@ -371,6 +412,31 @@
 <script src="/static/js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
 <script src="/static/js/charisma.js"></script>
+
+    <script type="text/javascript">
+
+
+    function changeUrlArg(url, arg, val){
+        var pattern = arg+'=([^&]*)';
+        var replaceText = arg+'='+val;
+        return url.match(pattern) ? url.replace(eval('/('+ arg+'=)([^&]*)/gi'), replaceText) : (url.match('[\?]') ? url+'&'+replaceText : url+'?'+replaceText);
+    }
+    document.onkeydown=function(event){
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if(e && e.keyCode==13){ // enter 键
+            //要做的事情
+            var search = $("#search").val();
+
+            console.log(search);
+            var cur_url = window.location.href;
+            window.location.href = changeUrlArg(cur_url,'search',search);
+        }
+
+
+    }
+
+
+</script>
 
 
 </body>

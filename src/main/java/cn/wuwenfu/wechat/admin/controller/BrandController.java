@@ -29,15 +29,12 @@ public class BrandController {
 
     @RequestMapping("/brandlist")
     public String brandList(HttpServletRequest request, Model model){
-        HashMap hm = new HashMap();
-        hm.put("offset",0);
-        hm.put("pagesize",20);
-        List<Brand> brands = this.brandService.getBrands(hm);
-        model.addAttribute("brands",brands);
-        for (Brand brand : brands
-             ) {
-            System.out.println(brand.toString());
-        }
+
+        String search = request.getParameter("search");
+
+        this.brandService.showProductsByPage(request,model,search);
+        model.addAttribute("search",search);
+
         return "admin/brandList";
     }
     @RequestMapping("/brandadd")
