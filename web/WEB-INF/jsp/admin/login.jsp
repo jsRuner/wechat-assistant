@@ -66,10 +66,10 @@
                 <div class="alert alert-info">
                     请输入你的用户名和密码.
                 </div>
-                <form class="form-horizontal" action="index.html" method="post">
+                <form class="form-horizontal" action="/admin/login" method="post">
                     <fieldset>
                         <div class="input-prepend" title="Username" data-rel="tooltip">
-                            <span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="admin" />
+                            <span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="userName" id="username" type="text" value="admin" />
                         </div>
                         <div class="clearfix"></div>
 

@@ -25,7 +25,7 @@ public interface BrandService {
      * @param model
      * @param brandName
      */
-    void showProductsByPage(HttpServletRequest request, Model model, String brandName);
+    public void showProductsByPage(HttpServletRequest request, Model model, String brandName);
 
 
 }

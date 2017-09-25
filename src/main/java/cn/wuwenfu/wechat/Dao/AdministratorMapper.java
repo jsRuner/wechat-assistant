@@ -11,6 +11,8 @@ public interface AdministratorMapper {
 
     Administrator selectByPrimaryKey(Short id);
 
+    Administrator selectByUserName(String userName);
+
     int updateByPrimaryKeySelective(Administrator record);
 
     int updateByPrimaryKey(Administrator record);

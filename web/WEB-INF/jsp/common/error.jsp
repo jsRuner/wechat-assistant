@@ -14,11 +14,32 @@
 </head>
 <body>
 <h1>出现错误</h1>
-<p></p>
+
+<p>
+    <c:if test="${ errorMessage != null}">
+            ${errorMessage}
+    </c:if>
+</p>
+
+<p>
+    <strong id="sp">3</strong> 后自动跳转
+</p>
 
 <a href="#" id="goBack" onclick="history.go(-1);">返回上一步</a>
 
-<script>
+<script type="text/javascript">
+    onload=function(){
+        setInterval(go, 1000);
+    };
+    var x=3; //利用了全局变量来执行
+    function go(){
+        x--;
+        if(x>0){
+            document.getElementById("sp").innerHTML=x; //每次设置的x的值都不一样了。
+        }else{
+            history.go(-1);
+        }
+    }
 </script>
 
 </body>

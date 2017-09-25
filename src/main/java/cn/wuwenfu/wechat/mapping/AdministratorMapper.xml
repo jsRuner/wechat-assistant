@@ -19,6 +19,16 @@
     from administrator
     where id = #{id,jdbcType=SMALLINT}
   </select>
+
+
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from administrator
+    where user_name = #{userName,jdbcType=SMALLINT}
+  </select>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
     delete from administrator
     where id = #{id,jdbcType=SMALLINT}

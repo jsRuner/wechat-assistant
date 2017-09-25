@@ -87,13 +87,13 @@
             <!-- user dropdown starts -->
             <div class="btn-group pull-right" >
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="icon-user"></i><span class="hidden-phone"> admin</span>
+                    <i class="icon-user"></i><span class="hidden-phone"> ${sessionScope.userName}</span>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">个人信息</a></li>
                     <li class="divider"></li>
-                    <li><a href="login.html">退出</a></li>
+                    <li><a href="/admin/logout">退出</a></li>
                 </ul>
             </div>
             <!-- user dropdown ends -->
