@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,13 @@ public class AdminController {
 
     @RequestMapping("/login")
     public String login(HttpServletRequest request, Model model, HttpSession httpSession, String userName, String password){
+        Jedis jedis = new Jedis("localhost");
+        jedis.set("foo", "bar");
+        String value = jedis.get("foo");
+
+        System.out.println(value);
+
+
         if (request.getMethod().equals("GET")){
             return "admin/login";
         }else{
