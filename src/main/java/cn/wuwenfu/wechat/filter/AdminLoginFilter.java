@@ -26,7 +26,7 @@ public class AdminLoginFilter implements Filter {
         Administrator admin = (Administrator) httpSession.getAttribute("admin");
 
         String path = httpServletRequest.getRequestURI();
-        if (path.indexOf("/admin/login") > -1){
+        if (path.indexOf("/admin/login") > -1 || path.indexOf("/admin/logout") > -1 ){
             filterChain.doFilter(servletRequest,servletResponse);
             return;
         }

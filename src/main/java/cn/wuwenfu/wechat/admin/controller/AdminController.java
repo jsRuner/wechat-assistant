@@ -38,7 +38,9 @@ public class AdminController {
     }
     @RequestMapping("/logout")
     public String logout(HttpSession httpSession,Model model){
-        httpSession.invalidate();
+        if (httpSession !=null){
+            httpSession.invalidate();
+        }
         model.addAttribute("toUrl","/admin/login");
         return "common/success";
     }
