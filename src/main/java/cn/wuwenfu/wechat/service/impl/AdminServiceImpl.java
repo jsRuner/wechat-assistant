@@ -38,4 +38,17 @@ public class AdminServiceImpl implements AdminService {
         session.setAttribute("admin",admin);
         return true;
     }
+
+    public boolean passwordEdit(String password, String newPassword) {
+
+        //先判断原密码是否正确。
+         Administrator admin = (Administrator) session.getAttribute("admin");
+         if (!admin.getPassword().equals(password)){
+             return false;
+         }
+        //再修改密码
+        admin.setPassword(newPassword);
+        this.administratorMapper.updateByPrimaryKey(admin);
+        return true;
+    }
 }

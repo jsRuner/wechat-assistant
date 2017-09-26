@@ -51,8 +51,20 @@ public class AdminController {
     }
 
     @RequestMapping("/passwordedit")
-    public String passwordEdit(){
-        return "admin/passwordEdit";
+    public String passwordEdit(HttpServletRequest request, Model model, String password, String newPassword){
+
+        if (request.getMethod().equals("GET")){
+            return "admin/passwordEdit";
+        }else{
+            if(this.adminService.passwordEdit(password,newPassword)){
+                model.addAttribute("toUrl","/admin/index");
+                return "common/success";
+            }else{
+                model.addAttribute("errorMessage","原密码错误");
+                return "common/error";
+            }
+        }
+
     }
 
 

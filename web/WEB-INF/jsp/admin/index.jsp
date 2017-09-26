@@ -91,7 +91,7 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">个人信息</a></li>
+                    <li><a href="/admin/passwordedit">修改密码</a></li>
                     <li class="divider"></li>
                     <li><a href="/admin/logout">退出</a></li>
                 </ul>
