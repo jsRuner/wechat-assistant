@@ -32,6 +32,7 @@ public class AdminController {
 
 
         if (request.getMethod().equals("GET")){
+            model.addAttribute("sessionId",httpSession.getId());
             return "admin/login";
         }else{
             model.addAttribute("toUrl","/admin/index");
