@@ -64,7 +64,7 @@
         <div class="row-fluid">
             <div class="well span5 center login-box">
                 <div class="alert alert-info">
-                    请输入你的用户名和密码.${sessionId}
+                    请输入你的用户名和密码
                 </div>
                 <form class="form-horizontal" action="/admin/login" method="post">
                     <fieldset>
