@@ -18,6 +18,9 @@
         <fileset id="fileset3" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/session.xml</file>
         </fileset>
+        <fileset id="fileset4" name="Spring Application Context (2)" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/applicationContext.xml</file>
+        </fileset>
       </configuration>
     </facet>
     <facet type="web" name="Web">

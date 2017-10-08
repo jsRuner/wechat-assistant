@@ -77,4 +77,17 @@
 
     </filter-mapping>
 
+
+    <!--admin管理后台的过滤器-->
+    <filter>
+        <filter-name>brand Filter</filter-name>
+        <filter-class>cn.wuwenfu.wechat.filter.BrandLoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>brand Filter</filter-name>
+        <url-pattern>/brand/*</url-pattern>
+
+    </filter-mapping>
+
 </web-app>

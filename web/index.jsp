@@ -14,8 +14,8 @@
   <body>
   <ul>
     <li><a href="${siteUrl}/admin/login">系统管理后台</a></li>
-    <li><a href="">品牌管理后台</a></li>
-    <li><a href="">用户管理后台</a></li>
+    <li><a href="${siteUrl}/brand/login">品牌管理后台</a></li>
+    <li><a href="${siteUrl}/user/login">用户管理后台</a></li>
   </ul>
   </body>
 </html>

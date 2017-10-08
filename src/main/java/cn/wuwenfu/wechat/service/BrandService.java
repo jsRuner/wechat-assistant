@@ -19,6 +19,10 @@ public interface BrandService {
 
     public Brand getBrandById(short brandId);
 
+    public boolean login( String userName, String password);
+
+    public boolean passwordEdit(String password,String newPassword);
+
     /**
      * 分页显示品牌
      * @param request

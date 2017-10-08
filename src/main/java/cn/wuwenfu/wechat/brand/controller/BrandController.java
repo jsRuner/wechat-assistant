@@ -1,6 +1,7 @@
-package cn.wuwenfu.wechat.admin.controller;
+package cn.wuwenfu.wechat.brand.controller;
 
 import cn.wuwenfu.wechat.service.AdminService;
+import cn.wuwenfu.wechat.service.BrandService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,21 +10,20 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@Controller
-@RequestMapping("/admin")
-public class AdminController {
-
+@Controller("brandBrandController")
+@RequestMapping("/brand")
+public class BrandController {
     @Resource
-    private AdminService adminService;
+    private BrandService brandService;
 
     @RequestMapping("/login")
     public String login(HttpServletRequest request, Model model, HttpSession httpSession, String userName, String password){
         if (request.getMethod().equals("GET")){
             model.addAttribute("sessionId",httpSession.getId());
-            return "admin/login";
+            return "brand/login";
         }else{
-            model.addAttribute("toUrl","/admin/index");
-            if (this.adminService.login(userName,password)){
+            model.addAttribute("toUrl","/brand/index");
+            if (this.brandService.login(userName,password)){
                 httpSession.setAttribute("userName",userName); //设置session
                 return "common/success";
             }else{
@@ -33,27 +33,28 @@ public class AdminController {
         }
     }
     @RequestMapping("/logout")
-    public String logout(HttpSession httpSession,Model model){
+    public String logout(HttpSession httpSession, Model model){
         if (httpSession !=null){
             httpSession.invalidate();
         }
-        model.addAttribute("toUrl","/admin/login");
+        model.addAttribute("toUrl","/brand/login");
         return "common/success";
     }
 
     @RequestMapping("/index")
-    public String index(){
-        return "admin/index";
+    public String index(HttpSession httpSession){
+        System.out.println(httpSession.getId());
+        return "brand/index";
     }
 
     @RequestMapping("/passwordedit")
     public String passwordEdit(HttpServletRequest request, Model model, String password, String newPassword){
 
         if (request.getMethod().equals("GET")){
-            return "admin/passwordEdit";
+            return "brand/passwordEdit";
         }else{
-            if(this.adminService.passwordEdit(password,newPassword)){
-                model.addAttribute("toUrl","/admin/index");
+            if(this.brandService.passwordEdit(password,newPassword)){
+                model.addAttribute("toUrl","/brand/index");
                 return "common/success";
             }else{
                 model.addAttribute("errorMessage","原密码错误");
@@ -62,6 +63,4 @@ public class AdminController {
         }
 
     }
-
-
 }

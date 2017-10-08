@@ -19,6 +19,13 @@
     where id = #{id,jdbcType=SMALLINT}
   </select>
 
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from brand
+    where user_name = #{userName,jdbcType=CHAR}
+  </select>
+
   <select id="getBrands" resultMap="BaseResultMap"  parameterType="java.util.HashMap" >
     select
     <include refid="Base_Column_List" />
