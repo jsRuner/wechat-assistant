@@ -1,7 +1,6 @@
 package cn.wuwenfu.wechat.service;
 
 import cn.wuwenfu.wechat.pojo.Brand;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;

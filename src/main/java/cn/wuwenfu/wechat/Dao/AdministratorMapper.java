@@ -1,7 +1,9 @@
 package cn.wuwenfu.wechat.dao;
 
 import cn.wuwenfu.wechat.pojo.Administrator;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AdministratorMapper {
     int deleteByPrimaryKey(Short id);
 

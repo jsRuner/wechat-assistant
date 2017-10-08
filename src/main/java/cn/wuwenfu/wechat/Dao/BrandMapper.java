@@ -3,10 +3,12 @@ package cn.wuwenfu.wechat.dao;
 import cn.wuwenfu.wechat.pojo.Administrator;
 import cn.wuwenfu.wechat.pojo.Brand;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 
+@Repository
 public interface BrandMapper {
     int deleteByPrimaryKey(Short id);
 

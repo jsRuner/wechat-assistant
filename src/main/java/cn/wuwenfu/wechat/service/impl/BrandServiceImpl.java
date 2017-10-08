@@ -1,9 +1,7 @@
 package cn.wuwenfu.wechat.service.impl;
 
 import cn.wuwenfu.wechat.common.Page;
-import cn.wuwenfu.wechat.dao.AdministratorMapper;
 import cn.wuwenfu.wechat.dao.BrandMapper;
-import cn.wuwenfu.wechat.pojo.Administrator;
 import cn.wuwenfu.wechat.pojo.Brand;
 import cn.wuwenfu.wechat.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
