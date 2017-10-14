@@ -4,51 +4,30 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
     <display-name>Archetype Created Web Application</display-name>
+
     <!-- Spring和mybatis的配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring-mybatis.xml</param-value>
+        <param-value>/WEB-INF/applicationContext.xml,classpath:session.xml,classpath:spring-mybatis.xml</param-value>
     </context-param>
-    <!-- 编码过滤器 -->
-    <filter>
-        <filter-name>encodingFilter</filter-name>
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <async-supported>true</async-supported>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
-    <!--admin管理后台的过滤器-->
-    <filter>
-        <filter-name>admin Filter</filter-name>
-        <filter-class>cn.wuwenfu.wechat.filter.AdminLoginFilter</filter-class>
-    </filter>
 
-    <filter-mapping>
-        <filter-name>admin Filter</filter-name>
-        <url-pattern>/admin/*</url-pattern>
 
-    </filter-mapping>
+
+
+
+
+
+    <!-- Spring监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <!--方便普通类获取session和request-->
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
-    <!-- Spring监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <!-- 防止Spring内存溢出监听器 -->
-    <listener>
-        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-    </listener>
 
     <!-- Spring MVC servlet -->
     <servlet>
@@ -66,8 +45,49 @@
         <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+
+    <filter>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+
+
     <welcome-file-list>
         <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>
+
+    <!--admin管理后台的过滤器-->
+    <filter>
+        <filter-name>admin Filter</filter-name>
+        <filter-class>cn.wuwenfu.wechat.filter.AdminLoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>admin Filter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+
+    </filter-mapping>
+
+
+    <!--admin管理后台的过滤器-->
+    <filter>
+        <filter-name>brand Filter</filter-name>
+        <filter-class>cn.wuwenfu.wechat.filter.BrandLoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>brand Filter</filter-name>
+        <url-pattern>/brand/*</url-pattern>
+
+    </filter-mapping>
 
 </web-app>

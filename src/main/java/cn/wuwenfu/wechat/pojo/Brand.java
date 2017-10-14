@@ -1,8 +1,9 @@
 package cn.wuwenfu.wechat.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Brand {
+public class Brand  implements Serializable {
     private Short id;
 
     private String userName;

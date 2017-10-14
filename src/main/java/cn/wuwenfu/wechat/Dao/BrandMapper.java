@@ -1,11 +1,14 @@
 package cn.wuwenfu.wechat.dao;
 
+import cn.wuwenfu.wechat.pojo.Administrator;
 import cn.wuwenfu.wechat.pojo.Brand;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 
+@Repository
 public interface BrandMapper {
     int deleteByPrimaryKey(Short id);
 
@@ -20,6 +23,8 @@ public interface BrandMapper {
     int updateByPrimaryKey(Brand record);
 
     List<Brand> getBrands(HashMap hm);
+
+    Brand selectByUserName(String userName);
 
     /**
      * 使用注解方式传入多个参数，用户产品分页，通过登录用户ID查询

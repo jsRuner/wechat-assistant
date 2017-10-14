@@ -1,4 +1,4 @@
 package cn.wuwenfu.wechat.user.controller;
 
-public class User {
+public class UserController {
 }

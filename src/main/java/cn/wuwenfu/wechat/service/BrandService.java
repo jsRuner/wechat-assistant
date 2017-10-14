@@ -1,7 +1,6 @@
 package cn.wuwenfu.wechat.service;
 
 import cn.wuwenfu.wechat.pojo.Brand;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +17,10 @@ public interface BrandService {
     public void deleteBrand(short brandId);
 
     public Brand getBrandById(short brandId);
+
+    public boolean login( String userName, String password);
+
+    public boolean passwordEdit(String password,String newPassword);
 
     /**
      * 分页显示品牌
