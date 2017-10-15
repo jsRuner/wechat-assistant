@@ -1,9 +1,13 @@
 package cn.wuwenfu.wechat.service.impl;
 
+import cn.wuwenfu.wechat.common.AppConstant;
 import cn.wuwenfu.wechat.common.Page;
+import cn.wuwenfu.wechat.common.Util;
 import cn.wuwenfu.wechat.dao.BrandMapper;
 import cn.wuwenfu.wechat.pojo.Brand;
 import cn.wuwenfu.wechat.service.BrandService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -18,7 +22,7 @@ import java.util.List;
 
 @Service("BrandService")
 public class BrandServiceImpl implements BrandService {
-
+    private static Logger logger = LoggerFactory.getLogger(BrandServiceImpl.class);
     @Resource
     private BrandMapper brandMapper;
 
@@ -39,10 +43,13 @@ public class BrandServiceImpl implements BrandService {
     }
 
     public void addBrand(Brand brand) {
+        String passwordSha1Str = Util.getPasswordShaStr(brand.getPassword(), AppConstant.ADMIN_PASSWORD_SALT);
+        brand.setPassword(passwordSha1Str);
         this.brandMapper.insert(brand);
     }
 
     public void editBrand(Brand brand) {
+        brand.setPassword(null); //不编辑密码。
         this.brandMapper.updateByPrimaryKeySelective(brand);
     }
 
@@ -61,12 +68,14 @@ public class BrandServiceImpl implements BrandService {
         //查询用户
         Brand brand = brandMapper.selectByUserName(userName);
 
-        System.out.println("查询的:"+brand);
 
         if (brand ==null){
             return false;
         }
-        if (!brand.getPassword().equals(password)){
+        //计算密码
+        String passwordSha1Str = Util.getPasswordShaStr(password, AppConstant.ADMIN_PASSWORD_SALT);
+        logger.info(passwordSha1Str);
+        if (!brand.getPassword().equals(passwordSha1Str)){
             return false;
         }
         session.setAttribute("brand",brand);
@@ -77,11 +86,16 @@ public class BrandServiceImpl implements BrandService {
     public boolean passwordEdit(String password, String newPassword) {
         //先判断原密码是否正确。
         Brand brand = (Brand) session.getAttribute("brand");
-        if (!brand.getPassword().equals(password)){
+        //计算密码
+        String passwordSha1Str = Util.getPasswordShaStr(password, AppConstant.ADMIN_PASSWORD_SALT);
+        logger.info(passwordSha1Str);
+        if (!brand.getPassword().equals(passwordSha1Str)){
             return false;
         }
         //再修改密码
-        brand.setPassword(newPassword);
+        //计算密码
+        passwordSha1Str = Util.getPasswordShaStr(newPassword, AppConstant.ADMIN_PASSWORD_SALT);
+        brand.setPassword(passwordSha1Str);
         this.brandMapper.updateByPrimaryKey(brand);
         return true;
     }

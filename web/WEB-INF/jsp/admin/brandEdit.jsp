@@ -58,12 +58,7 @@
                                     </div>
                                 </div>
 
-                                <div class="control-group">
-                                    <label class="control-label" for="password">密码</label>
-                                    <div class="controls">
-                                        <input class="input-xlarge focused" id="password" name="password" value="${brand.password}" type="text" placeholder="设置品牌的密码">
-                                    </div>
-                                </div>
+
 
                                 <div class="control-group">
                                     <label class="control-label" for="brandName">品牌名称</label>
@@ -77,8 +72,8 @@
 
                                     <div class="controls">
                                         <input class="input-xlarge focused" id="brandLogo" name="brandLogo"  type="file">
-                                        <c:if test="${!empty brand.brandLogo}">
-                                            <img style="display: block;width: 200px;" src="/uploads/${brand.brandLogo}" alt="">
+                                        <c:if test="${not empty brand.brandLogo}">
+                                            <img style="display: block;width: 200px;height: 200px;" src="${siteUrl}/uploads/${brand.brandLogo}" alt="">
                                         </c:if>
                                     </div>
                                 </div>

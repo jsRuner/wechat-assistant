@@ -43,10 +43,10 @@
             <div>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Home</a> <span class="divider">/</span>
+                        <a href="#">首页</a> <span class="divider">/</span>
                     </li>
                     <li>
-                        <a href="#">Tables</a>
+                        <a href="#">品牌列表</a>
                     </li>
                 </ul>
             </div>

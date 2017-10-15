@@ -35,7 +35,6 @@ public class AdminServiceImpl implements AdminService {
     public boolean login(String userName, String password) {
         //查询用户
         Administrator admin = administratorMapper.selectByUserName(userName);
-        System.out.println(admin.toString());
         if (admin ==null){
             return false;
         }

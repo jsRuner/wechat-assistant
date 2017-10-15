@@ -24,6 +24,10 @@ public class FileUpload {
                     if (fileName == ""){
                         return null;
                     }
+                    //判断路径是否存在.
+                    if (!new File(AppConstant.UPLOAD_DIR).exists()){
+                        return null;
+                    }
                     //上传
                     try {
                         file.transferTo(new File(AppConstant.UPLOAD_DIR + fileName));
