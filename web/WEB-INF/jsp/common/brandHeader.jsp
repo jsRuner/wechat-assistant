@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/admin/index"> <img alt="Charisma Logo" src="/static/img/logo20.png" /> <span>${sessionScope.userName}</span></a>
+            <a class="brand" href="/brand/index"> <img alt="Charisma Logo" src="/static/img/logo20.png" /> <span>${sessionScope.userName}</span></a>
 
 
 

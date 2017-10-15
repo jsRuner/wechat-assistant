@@ -1,7 +1,8 @@
 package cn.wuwenfu.wechat.brand.controller;
 
-import cn.wuwenfu.wechat.service.AdminService;
 import cn.wuwenfu.wechat.service.BrandService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpSession;
 public class BrandController {
     @Resource
     private BrandService brandService;
+
+    private static Logger logger = LoggerFactory.getLogger(BrandController.class);
 
     @RequestMapping("/login")
     public String login(HttpServletRequest request, Model model, HttpSession httpSession, String userName, String password){

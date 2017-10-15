@@ -2,6 +2,7 @@ package cn.wuwenfu.wechat.filter;
 
 
 import cn.wuwenfu.wechat.pojo.Administrator;
+import cn.wuwenfu.wechat.pojo.Brand;
 import com.sun.deploy.net.HttpResponse;
 
 import javax.servlet.*;
@@ -18,19 +19,18 @@ public class BrandLoginFilter implements Filter {
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("过滤器执行中");
         //判断是否登录了。没登录则跳转到登录页面。
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         HttpSession httpSession = httpServletRequest.getSession();
-        Administrator admin = (Administrator) httpSession.getAttribute("brand");
+        Brand brand = (Brand) httpSession.getAttribute("brand");
 
         String path = httpServletRequest.getRequestURI();
         if (path.indexOf("/brand/login") > -1 || path.indexOf("/brand/logout") > -1 ){
             filterChain.doFilter(servletRequest,servletResponse);
             return;
         }
-        if (admin == null){
+        if (brand == null){
             httpServletResponse.sendRedirect("/brand/login");
         }
         filterChain.doFilter(servletRequest,servletResponse);

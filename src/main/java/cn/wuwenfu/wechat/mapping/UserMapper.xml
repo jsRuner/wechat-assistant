@@ -14,17 +14,17 @@
   <sql id="Base_Column_List" >
     id, brand_id, user_name, password, real_name, mobile, address, date_add
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
     select 
     <include refid="Base_Column_List" />
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.wuwenfu.wechat.pojo.User" >
+  <insert id="addUser" parameterType="cn.wuwenfu.wechat.pojo.User" >
     insert into user (id, brand_id, user_name, 
       password, real_name, mobile, 
       address, date_add)
@@ -125,4 +125,15 @@
       date_add = #{dateAdd,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!-- 分页SQL语句 -->
+  <select id="selectUsersByPage" resultMap="BaseResultMap">
+    select
+    *
+    from user WHERE user_name LIKE CONCAT('%', #{userName, jdbcType=VARCHAR}, '%') limit #{offset},#{pageSize}
+  </select>
+  <!-- 取得记录的总数 -->
+  <select id="getUsersCount" resultType="long">
+    SELECT COUNT(*) FROM user WHERE user_name LIKE CONCAT('%', #{userName, jdbcType=VARCHAR}, '%')
+  </select>
 </mapper>
