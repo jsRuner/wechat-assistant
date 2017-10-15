@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
 
-        <jsp:include page="../common/menu.jsp"></jsp:include>
+        <jsp:include page="../common/brandMenu.jsp"></jsp:include>
 
         <noscript>
             <div class="alert alert-block span10">
