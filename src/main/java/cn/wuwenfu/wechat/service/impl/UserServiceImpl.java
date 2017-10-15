@@ -1,6 +1,8 @@
 package cn.wuwenfu.wechat.service.impl;
 
+import cn.wuwenfu.wechat.common.AppConstant;
 import cn.wuwenfu.wechat.common.Page;
+import cn.wuwenfu.wechat.common.Util;
 import cn.wuwenfu.wechat.dao.BrandMapper;
 import cn.wuwenfu.wechat.dao.UserMapper;
 import cn.wuwenfu.wechat.pojo.Brand;
@@ -32,11 +34,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
-         this.userMapper.addUser(user);
+        String password = Util.getPasswordShaStr(user.getPassword(), AppConstant.USER_PASSWORD_SALT);
+        user.setPassword(password);
+        this.userMapper.addUser(user);
     }
 
     @Override
     public void editUser(User user) {
+        user.setPassword(null);
         this.userMapper.updateByPrimaryKeySelective(user);
     }
 

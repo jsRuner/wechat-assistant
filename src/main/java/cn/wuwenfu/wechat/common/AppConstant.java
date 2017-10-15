@@ -9,4 +9,6 @@ public class AppConstant {
     public static String ADMIN_PASSWORD_SALT="jkfdakjfkdasjkjfka";
 
     public static String BRAND_PASSWORD_SALT="321JK32J1KJK32J1K";
+
+    public static String USER_PASSWORD_SALT="321JK32J1KJK32J1K";
 }

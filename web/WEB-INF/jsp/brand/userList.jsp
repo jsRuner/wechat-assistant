@@ -43,20 +43,20 @@
             <div>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Home</a> <span class="divider">/</span>
+                        <a href="#">首页</a> <span class="divider">/</span>
                     </li>
                     <li>
-                        <a href="#">Tables</a>
+                        <a href="#">用户列表</a>
                     </li>
                 </ul>
             </div>
 
-            <a class="btn btn-info" href="/brand/user/useradd">添加品牌</a>
+            <a class="btn btn-info" href="/brand/user/useradd">添加用户</a>
 
             <div class="row-fluid sortable">
                 <div class="box span12">
                     <div class="box-header well" data-original-title>
-                        <h2><i class="icon-user"></i> 品牌列表</h2>
+                        <h2><i class="icon-user"></i> 用户列表</h2>
 
                     </div>
                     <div class="box-content">
